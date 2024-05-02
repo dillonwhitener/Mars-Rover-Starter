@@ -52,6 +52,7 @@ describe("Rover class", function() {
     let rover = new Rover(98382);
     let response = rover.receiveMessage(message);
     expect(response.results[1]).toEqual({completed: false});
+    expect(rover.position).toEqual(98382)
   });
 
   it("responds with the position for the move command", function() {
@@ -59,6 +60,7 @@ describe("Rover class", function() {
     let message = new Message('Test message with two commands', commands);
     let rover = new Rover(98382);
     let response = rover.receiveMessage(message);
+    expect(response.results[1]).toEqual({completed: true});
     expect(rover.position).toEqual('98542');
   });
 
